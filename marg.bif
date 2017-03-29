@@ -1,0 +1,30 @@
+network SimpleMarginals {
+}
+variable A {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable B {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable C {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable D {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+
+probability ( A ) {
+  table 0.5, 0.5;
+}
+
+probability ( B ) {
+  table 0.1, 0.9;
+}
+
+probability ( C ) {
+  table 0.9, 0.1;
+}
+
+probability ( D ) {
+  table 0.2, 0.8;
+}

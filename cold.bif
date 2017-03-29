@@ -1,0 +1,44 @@
+network SimpleMarginals {
+}
+variable Cold {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable Light {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable RunnyNose {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable Sneeze {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable TakeMedicine {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+
+probability ( Cold ) {
+  table 0.1, 0.9;
+}
+
+probability ( Light ) {
+  table 0.7, 0.3;
+}
+
+probability ( RunnyNose | Cold ) {
+  (FALSE) 0.05, 0.95;
+  (TRUE)  0.5, 0.5;
+}
+
+probability ( Sneeze | Cold, Light ) {
+  (FALSE, FALSE) 0.01, 0.99;
+  (FALSE, TRUE)  0.25, 0.75;
+  (TRUE, FALSE)  0.50, 0.50;
+  (TRUE, TRUE)   0.60, 0.40;
+}
+
+probability ( TakeMedicine | RunnyNose, Sneeze ) {
+  (FALSE, FALSE) 0.01, 0.99;
+  (FALSE, TRUE)  0.10, 0.90;
+  (TRUE, FALSE)  0.20, 0.80;
+  (TRUE, TRUE)   0.50, 0.50;
+}

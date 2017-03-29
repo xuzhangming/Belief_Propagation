@@ -1,0 +1,37 @@
+network Sprinkler {
+}
+
+variable Cloudy {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable Sprinkler {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable Rain {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+variable WetGrass {
+  type discrete [ 2 ] { TRUE, FALSE };
+}
+
+probability ( Cloudy ) {
+  table 0.5, 0.5;
+}
+
+probability ( Sprinkler | Cloudy ) {
+  (TRUE)  0.1, 0.9;
+  (FALSE) 0.5, 0.5;
+}
+
+probability ( Rain | Cloudy ) {
+  (TRUE)  0.8, 0.2;
+  (FALSE) 0.2, 0.8;
+}
+
+probability ( WetGrass | Sprinkler,Rain ) {
+  (TRUE,TRUE)    0.99, 0.01;
+  (TRUE,FALSE)   0.90, 0.10;
+  (FALSE,TRUE)   0.90, 0.10;
+  (FALSE,FALSE)  0.01, 0.99;
+}
+
